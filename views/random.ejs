@@ -6,7 +6,16 @@
   <title>Random</title>
 </head>
 <body>
-  <h1>This is a random number: <%= rand %></h1>
-  // we have now an EJS template here, accepting a value from the variable 'rand'
+  <h1>This is a random number: <%= randNum %></h1>
+<!-- we have now an EJS template here, accepting a value from the variable 'randNum' -->
+
+  <% if(randNum % 2 === 0){ %>
+    <h3>The number is even!</h3>
+  <% } else { %>
+    <h3>The number is odd!</h3>
+  <% } %>
+  <!-- here we add a little logic to check if the number is odd or even,
+  notic that our code is enclosed with EJS brackets, but without the equal sign -->
+
 </body>
 </html>

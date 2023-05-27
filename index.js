@@ -10,14 +10,26 @@ app.set('views',path.join(__dirname,'/views'));
 // index.js to the /views directory where our .ejs template is
 
 app.get('/', (request,response) => {
-  response.render('home');
+  response.render('home.ejs');
 })
 // we created home.ejs which contains our simple HTML code (.ejs can also be omitted)
 // EJS can render JavaScript code into HTML, but in our case, the template is already on HTML
 
+app.get('/r/:anotherPage',(request, response) => {
+  const {anotherPage} = request.params;
+  response.render('anotherPage.ejs', {anotherPage});
+})
+
 app.get('/rand', (request, response) => {
   const randNum = Math.floor(Math.random() * 10) + 1;
-  response.render('random', {rand: randNum});
+  response.render('random.ejs', {randNum});
+})
+
+app.get('/voltesv',(request,response) => {
+  const voltesv = [
+    "Steve","Big Bert","Mark","Little Jon","Jamie"
+  ];
+  response.render('voltesv.ejs',{voltesv});
 })
 
 app.listen(3000, () => {
