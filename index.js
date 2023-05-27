@@ -12,8 +12,13 @@ app.set('views',path.join(__dirname,'/views'));
 app.get('/', (request,response) => {
   response.render('home');
 })
-// we created home.ejs which contains our simple html code
-// this is read by express as JS as interpreted by EJS, but rendered as HTML
+// we created home.ejs which contains our simple HTML code (.ejs can also be omitted)
+// EJS can render JavaScript code into HTML, but in our case, the template is already on HTML
+
+app.get('/rand', (request, response) => {
+  const randNum = Math.floor(Math.random() * 10) + 1;
+  response.render('random', {rand: randNum});
+})
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');
